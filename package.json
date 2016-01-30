@@ -1,0 +1,30 @@
+{
+  "name": "danish-ssn",
+  "version": "1.0.0",
+  "description": "Validate and generate danish social security numbers (cpr-nummer)",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "keywords": [
+    "cpr",
+    "cpr-nummer",
+    "personnummer",
+    "ssn",
+    "pin"
+  ],
+  "author": "Mathias Rasmussen <mathiasvr@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.11.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathiasvr/danish-ssn.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mathiasvr/danish-ssn/issues"
+  },
+  "homepage": "https://github.com/mathiasvr/danish-ssn#readme"
+}
