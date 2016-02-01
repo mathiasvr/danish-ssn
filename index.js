@@ -1,3 +1,5 @@
+var pad = require('pad-left')
+var sumProduct = require('sum-product')
 var moment = require('moment')
 
 var multipliers = [4, 3, 2, 7, 6, 5, 4, 3, 2, 1]
@@ -67,7 +69,8 @@ function validForDate (date) {
   var valids = []
 
   for (var i = 0; i < 1000; i++) {
-    var cpr = validate(dateString + zeroPad2(i))
+    // generate cpr and validate it by adding the check digit
+    var cpr = validate(dateString + pad(i, 3, '0'))
 
     // TODO: this could be optimized by only enumerating cpr numbers,
     //       with a valid 7th digit for the known year (see getDate)
@@ -85,13 +88,3 @@ cpr.info = function (cpr) { return getInfo(sanitize(cpr)) }
 cpr.isValid = function (cpr) { return isValid(sanitize(cpr)) }
 cpr.validate = function (cpr) { return validate(sanitize(cpr)) }
 cpr.validForDate = validForDate
-
-// TODO: move these
-// utility functions
-function zeroPad2 (num) {
-  return ('00' + num).slice(-3)
-}
-
-function sumProduct (a, b) {
-  return a.reduce(function (sum, digit, i) { return sum + digit * b[i] }, 0)
-}
