@@ -1,10 +1,24 @@
-# Danish SSN (CPR)
+# Danish SSN (CPR) [![npm][npm-image]][npm-url]
+
+[npm-image]: https://img.shields.io/npm/v/danish-ssn.svg
+[npm-url]: https://www.npmjs.com/package/danish-ssn
 
 Validate and generate danish social security numbers (cpr-nummer)
+
+## install
+```
+npm install danish-ssn
+```
 
 ## usage
 
 Validation is based on modulo-11 and century spans decribed in this [document](https://cpr.dk/media/167692/personnummeret%20i%20cpr.pdf) (in danish).
+
+```js
+var cpr = require('..')
+
+console.log(cpr('061093-7438')) // same as cpr.info()
+```
 
 ### .info(cpr)
 - Get information contained by the cpr number.
