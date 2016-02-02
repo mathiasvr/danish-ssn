@@ -12,7 +12,7 @@ function sanitize (cpr) {
   // exract digits
   cpr = cpr.replace(/[^\d]/g, '')
 
-  if (cpr.length !== 10) throw Error('Invalid CPR: must consist of 10 numbers')
+  if (cpr.length !== 10) throw Error('Invalid CPR: must consist of 10 digits')
   return cpr
 }
 
@@ -24,11 +24,9 @@ function isValid (cpr) {
 function validate (cpr) {
   cpr = cpr.substring(0, 9)
 
-  var checkDigit = 11 - modulo11(cpr)
+  var checkDigit = (11 - modulo11(cpr)) % 11
 
-  if (checkDigit === 10) return null
-
-  return cpr + (checkDigit !== 11 ? checkDigit : 0)
+  return checkDigit === 10 ? null : cpr + checkDigit
 }
 
 function getDate (cpr) {
