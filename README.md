@@ -12,7 +12,7 @@ npm install danish-ssn
 
 ## usage
 
-Validation is based on modulo-11 and century spans decribed in this [document](https://cpr.dk/media/167692/personnummeret%20i%20cpr.pdf) (in danish).
+Validation is based on modulo-11 and century spans decribed in this [document](https://www.cpr.dk/media/9345/personnummeret-i-cpr.pdf) (in danish).
 
 ```js
 var cpr = require('..')
