@@ -2,6 +2,11 @@ var pad = require('pad-left')
 var sumProduct = require('sum-product')
 var moment = require('moment')
 
+// parse two-digit year in 1900
+moment.parseTwoDigitYear = function (input) {
+  return parseInt(input, 10) + 1900
+}
+
 var multipliers = [4, 3, 2, 7, 6, 5, 4, 3, 2, 1]
 
 function modulo11 (cpr) {
@@ -9,7 +14,7 @@ function modulo11 (cpr) {
 }
 
 function sanitize (cpr) {
-  // exract digits
+  // extract digits
   cpr = cpr.replace(/[^\d]/g, '')
 
   if (cpr.length !== 10) throw Error('Invalid CPR: must consist of 10 digits')
