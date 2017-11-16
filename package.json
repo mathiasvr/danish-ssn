@@ -17,8 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "moment": "^2.11.1",
-    "pad-left": "^2.0.1",
-    "sum-product": "0.0.3"
+    "pad-left": "^2.0.1"
   },
   "devDependencies": {},
   "repository": {

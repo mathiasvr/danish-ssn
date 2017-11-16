@@ -1,5 +1,4 @@
 var pad = require('pad-left')
-var sumProduct = require('sum-product')
 var moment = require('moment')
 
 // parse two-digit year in 1900
@@ -8,6 +7,10 @@ moment.parseTwoDigitYear = function (input) {
 }
 
 var multipliers = [4, 3, 2, 7, 6, 5, 4, 3, 2, 1]
+
+function sumProduct (a, b) {
+  return a.reduce(function (sum, digit, i) { return sum + digit * b[i] }, 0)
+}
 
 function modulo11 (cpr) {
   return sumProduct(cpr.split(''), multipliers) % 11
