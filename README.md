@@ -12,10 +12,10 @@ npm install danish-ssn
 
 ## usage
 
-Validation is based on modulo-11 and century spans decribed in this [document](https://www.cpr.dk/media/9345/personnummeret-i-cpr.pdf) (in danish).
+Validation is based on modulo-11 and century spans described in this [document](https://www.cpr.dk/media/17534/personnummeret-i-cpr.pdf) (in danish).
 
 ```js
-var cpr = require('..')
+var cpr = require('danish-ssn')
 
 console.log(cpr('061093-7438')) // same as cpr.info()
 ```
@@ -26,7 +26,7 @@ console.log(cpr('061093-7438')) // same as cpr.info()
 ```js
 { cpr: '0610937438',
   valid: true,
-  date: Fri Oct 06 1893 00:00:00 GMT+0200 (CEST),
+  date: 1893-10-06T00:00:00.000Z,
   sex: 'Female' }
 ```
 
@@ -39,8 +39,7 @@ console.log(cpr('061093-7438')) // same as cpr.info()
 ### .validForDate(date)
 - Generates a list of all valid* cpr numbers for a given date.
 
-## *note
-CPR Numbers with invalid check digits has been issued since 2007!
+> *Note that since 2007, CPR numbers with invalid check digits has been issued for birthdays on January 1.
 
 ## license
 
