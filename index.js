@@ -20,7 +20,10 @@ function sanitize (cpr) {
   // extract digits
   cpr = cpr.replace(/[^\d]/g, '')
 
-  if (cpr.length !== 10) throw Error('Invalid CPR: must consist of 10 digits')
+  if (cpr.length !== 10) {
+    throw Error('Invalid CPR: must consist of 10 digits')
+  }
+
   return cpr
 }
 
@@ -72,18 +75,18 @@ function validForDate (date) {
   var year = date.getFullYear()
   var dateString = moment(date).format('DDMMYY')
 
-  var valids = []
+  var validNumbers = []
 
   for (var i = 0; i < 1000; i++) {
     // generate cpr and validate it by adding the check digit
     var cpr = validate(dateString + pad(i, 3, '0'))
 
-    // TODO: this could be optimized by only enumerating cpr numbers,
-    //       with a valid 7th digit for the known year (see getDate)
-    if (cpr && getDate(cpr).getFullYear() === year) valids.push(cpr)
+    if (cpr && getDate(cpr).getFullYear() === year) {
+      validNumbers.push(cpr)
+    }
   }
 
-  return valids
+  return validNumbers
 }
 
 var cpr = module.exports = function () {
