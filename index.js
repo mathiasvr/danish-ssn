@@ -89,11 +89,9 @@ function validForDate (date) {
   return validNumbers
 }
 
-var cpr = module.exports = function () {
-  return cpr.info.apply(this, arguments)
-}
-
-cpr.info = function (cpr) { return getInfo(sanitize(cpr)) }
+var cpr = function (cpr) { return getInfo(sanitize(cpr)) }
 cpr.isValid = function (cpr) { return isValid(sanitize(cpr)) }
 cpr.validate = function (cpr) { return validate(sanitize(cpr)) }
 cpr.validForDate = validForDate
+
+module.exports = cpr

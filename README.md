@@ -17,11 +17,11 @@ Validation is based on modulo-11 and century spans described in this [document](
 ```js
 var cpr = require('danish-ssn')
 
-console.log(cpr('061093-7438')) // same as cpr.info()
+console.log(cpr('061093-7438'))
 ```
 
-### .info(cpr)
-- Get information contained by the cpr number.
+### cpr(cpr)
+- Retrieve information contained by the cpr number.
 
 ```js
 { cpr: '0610937438',
@@ -30,13 +30,13 @@ console.log(cpr('061093-7438')) // same as cpr.info()
   sex: 'Female' }
 ```
 
-### .isValid(cpr)
+#### .isValid(cpr)
 - Returns whether or not the cpr number is valid*.
 
-### .validate(cpr)
+#### .validate(cpr)
 - Validates a cpr number by correcting the check digit or returning `null` if the cpr is invalid.
 
-### .validForDate(date)
+#### .validForDate(date)
 - Generates a list of all valid* cpr numbers for a given date.
 
 > *Note that since 2007, CPR numbers with invalid check digits has been issued for birthdays on January 1.
