@@ -23,7 +23,7 @@ console.log(cpr('061093-7438'))
 ### cpr(cpr)
 - Retrieve information contained by the cpr number.
 
-```js
+```
 { cpr: '0610937438',
   valid: true,
   date: 1893-10-06T00:00:00.000Z,
