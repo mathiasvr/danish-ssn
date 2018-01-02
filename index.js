@@ -43,7 +43,7 @@ function validate (cpr) {
 function getDate (cpr) {
   var digit7 = parseInt(cpr[6], 10)
 
-  var date = moment(cpr.substring(0, 6), 'DDMMYY')
+  var date = moment.utc(cpr.substring(0, 6), 'DDMMYY')
 
   // century correction
   if (digit7 === 4 || digit7 === 9) {
