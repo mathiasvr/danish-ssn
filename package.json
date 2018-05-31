@@ -16,7 +16,7 @@
   "author": "Mathias Rasmussen <mathiasvr@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "moment": "^2.11.1",
+    "moment": "^2.22.1",
     "pad-left": "^2.0.1"
   },
   "devDependencies": {},
