@@ -6,41 +6,42 @@
 Validate and generate danish social security numbers (cpr-nummer)
 
 ## install
-```
-npm install danish-ssn
+```shell
+$ npm install danish-ssn
 ```
 
 ## usage
 
-Validation is based on modulo-11 and century spans decribed in this [document](https://www.cpr.dk/media/9345/personnummeret-i-cpr.pdf) (in danish).
+Validation is based on modulo-11 and century spans described in this [document](https://www.cpr.dk/media/17534/personnummeret-i-cpr.pdf) (in danish).
 
 ```js
-var cpr = require('..')
+var cpr = require('danish-ssn')
 
-console.log(cpr('061093-7438')) // same as cpr.info()
+console.log(cpr('061093-7438'))
 ```
 
-### .info(cpr)
-- Get information contained by the cpr number.
+### cpr(cpr)
+Retrieve information contained by the cpr number,
+in the following format:
 
-```js
+```javascript
 { cpr: '0610937438',
   valid: true,
-  date: Fri Oct 06 1893 00:00:00 GMT+0200 (CEST),
+  date: new Date('1893-10-06T00:00:00.000Z'),
   sex: 'Female' }
 ```
 
-### .isValid(cpr)
-- Returns whether or not the cpr number is valid*.
+#### .isValid(cpr)
+Returns whether or not the cpr number is valid*.
 
-### .validate(cpr)
-- Validates a cpr number by correcting the check digit or returning `null` if the cpr is invalid.
+#### .validate(cpr)
+Makes a cpr number valid by correcting the check digit.
+Returns `null` if the cpr has no valid check digit.
 
-### .validForDate(date)
-- Generates a list of all valid* cpr numbers for a given date.
+#### .validForDate(date)
+Generates a list of all valid* cpr numbers for a given date.
 
-## *note
-CPR Numbers with invalid check digits has been issued since 2007!
+> *Note that since 2007, CPR numbers with invalid check digits has been issued for birthdays on January 1.
 
 ## license
 

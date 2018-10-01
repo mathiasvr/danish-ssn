@@ -17,10 +17,17 @@ function modulo11 (cpr) {
 }
 
 function sanitize (cpr) {
+  if (typeof cpr !== 'string') {
+    throw TypeError('Invalid CPR: must be of type string')
+  }
+
   // extract digits
   cpr = cpr.replace(/[^\d]/g, '')
 
-  if (cpr.length !== 10) throw Error('Invalid CPR: must consist of 10 digits')
+  if (cpr.length !== 10) {
+    throw TypeError('Invalid CPR: must consist of 10 digits')
+  }
+
   return cpr
 }
 
@@ -40,7 +47,7 @@ function validate (cpr) {
 function getDate (cpr) {
   var digit7 = parseInt(cpr[6], 10)
 
-  var date = moment(cpr.substring(0, 6), 'DDMMYY')
+  var date = moment.utc(cpr.substring(0, 6), 'DDMMYY')
 
   // century correction
   if (digit7 === 4 || digit7 === 9) {
@@ -72,25 +79,23 @@ function validForDate (date) {
   var year = date.getFullYear()
   var dateString = moment(date).format('DDMMYY')
 
-  var valids = []
+  var validNumbers = []
 
   for (var i = 0; i < 1000; i++) {
     // generate cpr and validate it by adding the check digit
     var cpr = validate(dateString + pad(i, 3, '0'))
 
-    // TODO: this could be optimized by only enumerating cpr numbers,
-    //       with a valid 7th digit for the known year (see getDate)
-    if (cpr && getDate(cpr).getFullYear() === year) valids.push(cpr)
+    if (cpr && getDate(cpr).getFullYear() === year) {
+      validNumbers.push(cpr)
+    }
   }
 
-  return valids
+  return validNumbers
 }
 
-var cpr = module.exports = function () {
-  return cpr.info.apply(this, arguments)
-}
-
-cpr.info = function (cpr) { return getInfo(sanitize(cpr)) }
+var cpr = function (cpr) { return getInfo(sanitize(cpr)) }
 cpr.isValid = function (cpr) { return isValid(sanitize(cpr)) }
 cpr.validate = function (cpr) { return validate(sanitize(cpr)) }
 cpr.validForDate = validForDate
+
+module.exports = cpr

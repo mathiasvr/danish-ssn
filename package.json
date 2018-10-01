@@ -4,7 +4,7 @@
   "description": "Validate and generate danish social security numbers (cpr-nummer)",
   "main": "index.js",
   "scripts": {
-    "test": "standard"
+    "test": "standard && node tests.js"
   },
   "keywords": [
     "cpr",
@@ -16,8 +16,8 @@
   "author": "Mathias Rasmussen <mathiasvr@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "moment": "^2.22.1",
-    "pad-left": "^2.0.1"
+    "moment": "2.22.2",
+    "pad-left": "2.1.0"
   },
   "devDependencies": {},
   "repository": {
