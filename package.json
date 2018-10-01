@@ -1,6 +1,6 @@
 {
   "name": "danish-ssn",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Validate and generate danish social security numbers (cpr-nummer)",
   "main": "index.js",
   "scripts": {
