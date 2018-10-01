@@ -6,8 +6,8 @@
 Validate and generate danish social security numbers (cpr-nummer)
 
 ## install
-```
-npm install danish-ssn
+```shell
+$ npm install danish-ssn
 ```
 
 ## usage
@@ -35,7 +35,8 @@ in the following format:
 Returns whether or not the cpr number is valid*.
 
 #### .validate(cpr)
-Makes a cpr number valid by correcting the check digit or returning `null` if the cpr is invalid.
+Makes a cpr number valid by correcting the check digit.
+Returns `null` if the cpr has no valid check digit.
 
 #### .validForDate(date)
 Generates a list of all valid* cpr numbers for a given date.
