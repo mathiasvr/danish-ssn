@@ -17,11 +17,15 @@ function modulo11 (cpr) {
 }
 
 function sanitize (cpr) {
+  if (typeof cpr !== 'string') {
+    throw TypeError('Invalid CPR: must be of type string')
+  }
+
   // extract digits
   cpr = cpr.replace(/[^\d]/g, '')
 
   if (cpr.length !== 10) {
-    throw Error('Invalid CPR: must consist of 10 digits')
+    throw TypeError('Invalid CPR: must consist of 10 digits')
   }
 
   return cpr
