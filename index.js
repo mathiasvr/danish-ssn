@@ -81,7 +81,7 @@ function validForDate (date) {
 
   var formattedDate = ('0' + date.getDate()).slice(-2)
   var formattedMonth = ('0' + (date.getMonth() + 1)).slice(-2)
-  var formattedYear = date.getFullYear().slice(-2)
+  var formattedYear = ('' + date.getFullYear()).slice(-2)
 
   var dateString = formattedDate + formattedMonth + formattedYear
 
